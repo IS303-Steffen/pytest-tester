@@ -10,7 +10,7 @@ def normalize_text(text):
 
 def test_multiple_output(capsys):
     # Import the student's script which will execute the top-level code
-    importlib.import_module("student_script")
+    importlib.import_module("example_function")
     
     # Capture the output from the print statements
     captured = capsys.readouterr().out
