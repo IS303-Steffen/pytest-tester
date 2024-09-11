@@ -1,5 +1,6 @@
 import re
 import importlib
+import example_function
 
 def normalize_text(text):
     # Remove punctuation, extra spaces, and make it lowercase
@@ -10,7 +11,7 @@ def normalize_text(text):
 
 def test_multiple_output(capsys):
     # Import the student's script which will execute the top-level code
-    importlib.import_module("example_function")
+    importlib.reload(example_function)
     
     # Capture the output from the print statements
     captured = capsys.readouterr().out
@@ -30,4 +31,4 @@ def test_multiple_output(capsys):
 
     # Compare each output line individually with the normalized expected output
     for i, expected in enumerate(expected_outputs):
-        assert normalize_text(output_lines[i]) == normalize_text(expected), f"Mismatch at line {i+1}"
+        assert normalize_text(output_lines[i]) == normalize_text(expected), f"Printed output #{i+1} wasn't the expected result:"
