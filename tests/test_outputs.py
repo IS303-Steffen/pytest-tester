@@ -1,6 +1,6 @@
 import re
 import importlib
-
+import pytest
 
 def normalize_text(text):
     # Remove punctuation, extra spaces, and make it lowercase
@@ -8,6 +8,7 @@ def normalize_text(text):
     text = text.lower().strip()          # Lowercase and remove leading/trailing spaces
     text = ' '.join(text.split())        # Normalize spaces
     return text
+
 
 def test_multiple_output(capsys, monkeypatch):
 
@@ -60,4 +61,4 @@ def test_multiple_output(capsys, monkeypatch):
 
     # Compare each output line individually with the normalized expected output
     for i, expected in enumerate(expected_outputs):
-        assert normalize_text(output_lines[i]) == normalize_text(expected), f"Printed output #{i+1} wasn't the expected result:"
+        assert normalize_text(output_lines[i]) == normalize_text(expected), f"\n\nPrinted output #{i+1} wasn't the expected result:"
